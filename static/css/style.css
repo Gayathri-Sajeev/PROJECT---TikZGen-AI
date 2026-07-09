@@ -1,0 +1,321 @@
+/* ── TikZGen AI — Custom Dark-Mode Stylesheet ─────────────────────────────── */
+
+:root {
+  --bg-base:        #0d1117;
+  --bg-surface:     #161b22;
+  --bg-elevated:    #1c2128;
+  --bg-code:        #0d1117;
+  --border:         #30363d;
+  --border-subtle:  #21262d;
+  --text-primary:   #e6edf3;
+  --text-muted:     #7d8590;
+  --text-accent:    #58a6ff;
+  --accent:         #238636;
+  --accent-hover:   #2ea043;
+  --refine-color:   #7c5cd8;
+  --refine-hover:   #6e50c2;
+  --danger:         #f85149;
+  --success:        #3fb950;
+  --tab-active-bg:  #161b22;
+  --font-mono:      "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+/* ── Topbar ───────────────────────────────────────────────────────────────── */
+.topbar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  font-size: 1.6rem;
+  color: var(--text-accent);
+  line-height: 1;
+}
+
+.tagline { font-size: 0.78rem; }
+
+.model-badge {
+  background: #1c2a3a;
+  color: var(--text-accent);
+  border: 1px solid #2d4a6e;
+  font-weight: 500;
+  font-size: 0.72rem;
+}
+
+.watsonx-badge {
+  background: #1f1a2e;
+  color: #b39ddb;
+  border: 1px solid #4a3a6e;
+  font-weight: 500;
+  font-size: 0.72rem;
+}
+
+/* ── Main container ───────────────────────────────────────────────────────── */
+.main-container {
+  height: calc(100vh - 52px);
+  overflow: hidden;
+}
+
+/* ── Left panel ───────────────────────────────────────────────────────────── */
+.left-panel {
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border);
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────────────────────── */
+.nav-tabs {
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-tabs .nav-link {
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  font-size: 0.82rem;
+  padding: 6px 14px;
+}
+
+.nav-tabs .nav-link:hover { color: var(--text-primary); }
+
+.nav-tabs .nav-link.active {
+  color: var(--text-primary);
+  background: var(--tab-active-bg);
+  border-color: var(--border) var(--border) var(--tab-active-bg);
+}
+
+/* ── Textarea ─────────────────────────────────────────────────────────────── */
+.mono-area {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  resize: none;
+  min-height: 260px;
+  line-height: 1.6;
+  padding: 12px;
+  transition: border-color 0.15s;
+}
+
+.mono-area:focus {
+  outline: none;
+  border-color: var(--text-accent);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* ── Dropzone ─────────────────────────────────────────────────────────────── */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  min-height: 260px;
+  padding: 32px 24px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.dropzone.drag-over {
+  border-color: var(--text-accent);
+  background: rgba(88, 166, 255, 0.05);
+}
+
+.dz-icon {
+  font-size: 3rem;
+  color: var(--text-muted);
+}
+
+.btn-outline-accent {
+  color: var(--text-accent);
+  border-color: var(--text-accent);
+  background: transparent;
+}
+
+.btn-outline-accent:hover {
+  background: rgba(88, 166, 255, 0.1);
+  color: var(--text-accent);
+  border-color: var(--text-accent);
+}
+
+/* ── Generate button ──────────────────────────────────────────────────────── */
+.btn-generate {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-generate:hover:not(:disabled) {
+  background: var(--accent-hover);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-generate:disabled {
+  background: #21262d;
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* ── Refine button ────────────────────────────────────────────────────────── */
+.btn-refine {
+  background: var(--refine-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.btn-refine:hover:not(:disabled) {
+  background: var(--refine-hover);
+  color: #fff;
+}
+
+/* ── Section label ────────────────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+/* ── Status message ───────────────────────────────────────────────────────── */
+.status-msg {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.status-msg.error {
+  background: rgba(248, 81, 73, 0.12);
+  border: 1px solid rgba(248, 81, 73, 0.4);
+  color: var(--danger);
+}
+
+.status-msg.success {
+  background: rgba(63, 185, 80, 0.1);
+  border: 1px solid rgba(63, 185, 80, 0.35);
+  color: var(--success);
+}
+
+/* ── Vertical divider ─────────────────────────────────────────────────────── */
+.v-divider {
+  width: 1px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Right panel ──────────────────────────────────────────────────────────── */
+.right-panel {
+  background: var(--bg-base);
+  height: 100%;
+  overflow: hidden;
+}
+
+.panel-header {
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.text-accent { color: var(--text-accent) !important; }
+
+/* ── Tool buttons ─────────────────────────────────────────────────────────── */
+.btn-tool {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  padding: 5px 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-tool:hover:not(:disabled) {
+  background: #2d333b;
+  color: var(--text-accent);
+  border-color: var(--text-accent);
+}
+
+.btn-tool:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Code area ────────────────────────────────────────────────────────────── */
+.code-area-wrapper {
+  overflow-y: auto;
+}
+
+.code-block {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+  font-family: var(--font-mono);
+  font-size: 0.80rem;
+  line-height: 1.7;
+  color: #adbac7;
+  tab-size: 2;
+}
+
+/* Syntax colour hints (no external highlighter needed) */
+.code-block .kw  { color: #f47067; }
+.code-block .cmd { color: #6cb6ff; }
+.code-block .opt { color: #8ddb8c; }
+.code-block .cmt { color: #768390; font-style: italic; }
+
+/* ── Empty state ──────────────────────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  color: var(--border);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #444c56; }
+
+/* ── Responsive: stack panels on small screens ────────────────────────────── */
+@media (max-width: 991px) {
+  html, body { overflow: auto; }
+  .main-container { height: auto; overflow: auto; }
+  .left-panel, .right-panel { height: auto; overflow: visible; }
+  .code-area-wrapper { min-height: 320px; }
+  .mono-area { min-height: 180px; }
+  .dropzone { min-height: 180px; }
+}

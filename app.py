@@ -16,8 +16,12 @@ from ibm_watsonx_ai.foundation_models import ModelInference
 from ibm_watsonx_ai.metanames import GenTextParamsMetaNames as GenParams
 
 # ── Credentials ───────────────────────────────────────────────────────────────
-_ENV_PATH = Path(__file__).parent / ".env"
-load_dotenv(dotenv_path=_ENV_PATH, override=True)
+# Replace your current load_dotenv lines with this:
+if (_ENV_PATH := Path(__file__).parent / ".env").exists():
+    load_dotenv(dotenv_path=_ENV_PATH)
+else:
+    load_dotenv()  # Fallback to standard system environment variables
+
 
 WATSONX_APIKEY     = os.getenv("WATSONX_APIKEY", "")
 WATSONX_PROJECT_ID = os.getenv("WATSONX_PROJECT_ID", "")
